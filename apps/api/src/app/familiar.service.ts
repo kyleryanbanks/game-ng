@@ -14,24 +14,19 @@ export class FamiliarService {
   connect(): null | Error {
     this.connectionError = this.client.connect();
 
+    this.controller = this.client.createDS4Controller();
+
     return this.connectionError;
   }
 
   plugInDS4Controller() {
-    this.controller = this.client.createDS4Controller();
-    const err = this.controller.connect();
+    if (!this.controller) throw Error('Connection Failed');
 
-    if (err) {
-      console.log(err.message);
-      process.exit(1);
-    }
-
-    return this.controller();
+    this.controller.updateMode = 'manual';
+    return this.controller.connect();
   }
 
-  holdDownBack() {
-    this.controller.updateMode = 'manual';
-
+  turtle() {
     if (!this.controller) {
       throw Error('Ur not plugged in scrub');
     }
@@ -40,5 +35,20 @@ export class FamiliarService {
     this.controller.axis.dpadVert.setValue(-1);
 
     this.controller.update();
+
+    return true;
+  }
+
+  chill() {
+    if (!this.controller) {
+      throw Error('Ur not plugged in scrub');
+    }
+
+    this.controller.axis.dpadHorz.setValue(0);
+    this.controller.axis.dpadVert.setValue(0);
+
+    this.controller.update();
+
+    return true;
   }
 }

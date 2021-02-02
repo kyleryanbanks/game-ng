@@ -17,6 +17,7 @@ export class AppComponent {
       .post('api/connect', {})
       .pipe(
         catchError((err) => {
+          this.connected = false;
           throw 'Error connecting. Details: ' + err;
         })
       )
@@ -30,7 +31,8 @@ export class AppComponent {
       .post('api/plugDS4', {})
       .pipe(
         catchError((err) => {
-          throw 'Error connecting. Details: ' + err;
+          this.pluggedIn = false;
+          throw 'Could not plug in for some reason' + err;
         })
       )
       .subscribe(() => {
@@ -38,17 +40,28 @@ export class AppComponent {
       });
   }
 
-  onTurtle() {
-    this.http
-      .post('api/holdDownBack', {})
-      .pipe(
-        catchError((err) => {
-          throw 'Error connecting. Details: ' + err;
-        })
-      )
-      .subscribe(() => {
-        this.turtling = true;
-      });
+  onToggle() {
+    this.turtling
+      ? this.http
+          .post('api/chill', {})
+          .pipe(
+            catchError((err) => {
+              throw 'I could not chill: ' + err;
+            })
+          )
+          .subscribe(() => {
+            this.turtling = false;
+          })
+      : this.http
+          .post('api/turtle', {})
+          .pipe(
+            catchError((err) => {
+              throw 'I dont block: ' + err;
+            })
+          )
+          .subscribe(() => {
+            this.turtling = true;
+          });
   }
 
   constructor(private http: HttpClient) {}

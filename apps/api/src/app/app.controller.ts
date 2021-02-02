@@ -3,7 +3,7 @@ import { Controller, Post } from '@nestjs/common';
 import { FamiliarService } from './familiar.service';
 
 @Controller()
-export class appController {
+export class AppController {
   constructor(private readonly familiarService: FamiliarService) {}
 
   @Post('connect')
@@ -16,8 +16,13 @@ export class appController {
     return this.familiarService.plugInDS4Controller();
   }
 
-  @Post('downBack')
-  holdDownBack() {
-    return this.familiarService.holdDownBack();
+  @Post('turtle')
+  turtle() {
+    return this.familiarService.turtle();
+  }
+
+  @Post('chill')
+  chill() {
+    return this.familiarService.chill();
   }
 }

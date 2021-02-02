@@ -2,7 +2,7 @@
   <h1>Welcome to Familiar!</h1>
   <button (click)="onConnect()">Connect</button>
   <button (click)="onPlugIn()">Plug In!</button>
-  <button (click)="onTurtle()">TURTLE!</button>
+  <button (click)="onToggle()">{{ turtling ? 'Chillll' : "TURTLE!"}}</button>
 </div>
 
 <div>Connected: {{ connected }}</div>
