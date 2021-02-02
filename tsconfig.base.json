@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@game-ng/api-interfaces": ["libs/api-interfaces/src/index.ts"]
+      "@game-ng/api-interfaces": ["libs/api-interfaces/src/index.ts"],
+      "@game-ng/heart-beat": ["libs/heart-beat/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

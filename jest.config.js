@@ -1,3 +1,7 @@
 module.exports = {
-  projects: ['<rootDir>/apps/familiar', '<rootDir>/apps/api'],
+  projects: [
+    '<rootDir>/apps/familiar',
+    '<rootDir>/apps/api',
+    '<rootDir>/libs/heart-beat',
+  ],
 };

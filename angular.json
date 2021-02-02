@@ -210,6 +210,27 @@
           }
         }
       }
+    },
+    "heart-beat": {
+      "root": "libs/heart-beat",
+      "sourceRoot": "libs/heart-beat/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/heart-beat/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/heart-beat"],
+          "options": {
+            "jestConfig": "libs/heart-beat/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   }
 }

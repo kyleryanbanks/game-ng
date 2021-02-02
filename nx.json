@@ -1,14 +1,9 @@
 {
   "npmScope": "game-ng",
-  "affected": {
-    "defaultBase": "master"
-  },
+  "affected": { "defaultBase": "master" },
   "implicitDependencies": {
     "angular.json": "*",
-    "package.json": {
-      "dependencies": "*",
-      "devDependencies": "*"
-    },
+    "package.json": { "dependencies": "*", "devDependencies": "*" },
     "tsconfig.base.json": "*",
     "tslint.json": "*",
     ".eslintrc.json": "*",
@@ -19,32 +14,17 @@
       "runner": "@nrwl/nx-cloud",
       "options": {
         "accessToken": "YzliYmVhOTUtMjY3YS00MjMxLTllMDgtNWM4ZjRlNjY0MTRkfHJlYWQtd3JpdGU=",
-        "cacheableOperations": [
-          "build",
-          "test",
-          "lint",
-          "e2e"
-        ],
+        "cacheableOperations": ["build", "test", "lint", "e2e"],
         "canTrackAnalytics": false,
         "showUsageWarnings": true
       }
     }
   },
   "projects": {
-    "familiar": {
-      "tags": []
-    },
-    "familiar-e2e": {
-      "tags": [],
-      "implicitDependencies": [
-        "familiar"
-      ]
-    },
-    "api": {
-      "tags": []
-    },
-    "api-interfaces": {
-      "tags": []
-    }
+    "familiar": { "tags": [] },
+    "familiar-e2e": { "tags": [], "implicitDependencies": ["familiar"] },
+    "api": { "tags": [] },
+    "api-interfaces": { "tags": [] },
+    "heart-beat": { "tags": ["type:util"] }
   }
 }
