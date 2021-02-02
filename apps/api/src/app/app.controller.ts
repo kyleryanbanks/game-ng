@@ -1,15 +1,23 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Post } from '@nestjs/common';
 
-import { Message } from '@game-ng/api-interfaces';
-
-import { AppService } from './app.service';
+import { FamiliarService } from './familiar.service';
 
 @Controller()
-export class AppController {
-  constructor(private readonly appService: AppService) {}
+export class appController {
+  constructor(private readonly familiarService: FamiliarService) {}
 
-  @Get('hello')
-  getData(): Message {
-    return this.appService.getData();
+  @Post('connect')
+  connect(): null | Error {
+    return this.familiarService.connect();
+  }
+
+  @Post('plugDS4')
+  plugInDS4Controller(): null | Error {
+    return this.familiarService.plugInDS4Controller();
+  }
+
+  @Post('downBack')
+  holdDownBack() {
+    return this.familiarService.holdDownBack();
   }
 }
