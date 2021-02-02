@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Message } from '@game-ng/api-interfaces';
+import { catchError } from 'rxjs/operators';
 
 @Component({
   selector: 'game-ng-root',
@@ -8,6 +8,48 @@ import { Message } from '@game-ng/api-interfaces';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  hello$ = this.http.get<Message>('/api/hello');
+  connected = false;
+  pluggedIn = false;
+  turtling = false;
+
+  onConnect() {
+    this.http
+      .post('api/connect', {})
+      .pipe(
+        catchError((err) => {
+          throw 'Error connecting. Details: ' + err;
+        })
+      )
+      .subscribe(() => {
+        this.connected = true;
+      });
+  }
+
+  onPlugIn() {
+    this.http
+      .post('api/plugDS4', {})
+      .pipe(
+        catchError((err) => {
+          throw 'Error connecting. Details: ' + err;
+        })
+      )
+      .subscribe(() => {
+        this.pluggedIn = true;
+      });
+  }
+
+  onTurtle() {
+    this.http
+      .post('api/holdDownBack', {})
+      .pipe(
+        catchError((err) => {
+          throw 'Error connecting. Details: ' + err;
+        })
+      )
+      .subscribe(() => {
+        this.turtling = true;
+      });
+  }
+
   constructor(private http: HttpClient) {}
 }
